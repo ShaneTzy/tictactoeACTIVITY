@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Multiplayer Tic-Tac-Toe";
+}
+
+< div class= "container mt-4" >
+    < div class= "row" >
+        < div class= "col-lg-8 mx-auto" >
+            < div class= "card shadow" >
+                < div class= "card-header bg-primary text-white" >
+                    < h2 class= "text-center mb-0" > Multiplayer Tic - Tac - Toe </ h2 >
+                </ div >
+                < div class= "card-body" >
+                    < div id = "lobby" class= "text-center" >
+                        < h4 > Create or Join a Game</h4>
+                        <div class= "input-group mb-3" >
+                            < input type = "text" id = "game-id-input" class= "form-control" placeholder = "Enter Game ID" >
+                            < button id = "join-game-btn" class= "btn btn-success" > Join Game </ button >
+                        </ div >
+                        < button id = "create-game-btn" class= "btn btn-primary" > Create New Game</button>
+                    </div>
+
+                    <div id = "game-container" class= "d-none" >
+                        < div class= "alert alert-info mb-3" >
+                            < span id = "game-status" > Waiting for opponent...</ span >
+                            < div > You are Player: < strong id = "player-symbol" ></ strong ></ div >
+                            < div > Game ID: < strong id = "current-game-id" ></ strong ></ div >
+                        </ div >
+
+                        < div class= "game-board mb-4" >
+                            < div class= "row" >
+                                        @for (int i = 0; i < 9; i++)
+                                        {
+                                        < div class= "col-4 p-0" >
+                                            < div class= "mp-game-cell" data - position = "@i" >
+                                                < span ></ span >
+                                            </ div >
+                                        </ div >
+                                        }
+                            </ div >
+                        </ div >
+
+                        < button id = "reset-game" class= "btn btn-warning" > Reset Game </ button >
+                        < button id = "leave-game" class= "btn btn-danger" > Leave Game </ button >
+                    </ div >
+                </ div >
+            </ div >
+        </ div >
+    </ div >
+</ div >
+
+    @section Scripts {
+        <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+        <script src="~/js/multiplayer.js"></script>
+    }
